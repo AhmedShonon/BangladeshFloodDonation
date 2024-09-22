@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tailwind Connect -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- DaisyUI Link  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Lexend google-font link-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Donate Bangladesh</title>
+    <style>
+      .font-lexend {
+        font-family: "Lexend", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body class="font-lexend">
+    <!-- Sticky Navbar & the buttons -->
+
+    <!-- <nav class="bg-[#faf8f599] flex mx-auto justify-between py-7 px-20"> -->
+    <nav
+      class="bg-[#faf8f599] grid sm:grid-cols-1 md:grid-cols-3 mx-auto md:justify-around py-7 sticky top-0 z-50 backdrop-blur-md"
+    >
+      <button
+  class="bg-[#b5f562] py-4 px-7 rounded-lg font-bold sm:mb-3 sm:w-[50%] lg:w-28 mx-auto"
+  onclick="window.location.href='http://127.0.0.1:5501/index.html'">
+  Home
+</button>
+
+      <div class="flex items-center gap-4 sm:mx-auto justify-center">
+        <img
+          class="outline-dashed text-gray-300"
+          src="./assets/logo.png"
+          alt=""
+        />
+        <p class="font-extrabold text-xl">Donate Bangladesh</p>
+      </div>
+      <div class="flex items-center gap-4 sm:mx-auto justify-center mt-3">
+        <img
+          class="outline-dashed text-gray-300"
+          src="./assets/coin.png"
+          alt=""
+        />
+        <p class="font-medium"><span>5500</span><span> BDT</span></p>
+      </div>
+    </nav>
+
+    <!-- FAQ Section -->
+     <!-- FAQ Section Title -->
+  <div class="text-center">
+    <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-400 mb-5">
+      Frequently Asked Questions
+    </h1>
+    
+    <div class="w-32 mx-auto border-b-4 border-blue-500 hover:scale-105 transition-transform duration-300 ease-in-out"></div>
+
+    <p class="text-lg text-gray-600 mt-4 daisy-tooltip" data-tip="Find the answers you need">
+      Get all your answers in one place
+    </p>
+</div>
+
+    <div class="collapse collapse-arrow bg-base-200">
+      <input type="radio" name="my-accordion-2" />
+      <div class="collapse-title text-xl font-medium">
+        a. What is the Document Object Model (DOM)?
+      </div>
+      <div class="collapse-content">
+        <p>
+          The Document Object Model (DOM) is a structured representation of a
+          web page. It allows JavaScript to interact with the content of the
+          page. We can think of it as a tree where each part of the HTML (like
+          paragraphs, images, or buttons) becomes a "node" or "branch" that can
+          be accessed and changed using JavaScript.
+        </p>
+      </div>
+    </div>
+
+    <div class="collapse collapse-arrow bg-base-200">
+      <input type="radio" name="my-accordion-2" />
+      <div class="collapse-title text-xl font-medium">
+        b. How do you select an element from the DOM?
+      </div>
+      <div class="collapse-content">
+        <p>
+          To select an element from the DOM, JavaScript provides methods like:
+        </p>
+        <br />
+        <p>
+          1.document.getElementById('element-id'): Selects an element by its
+          unique id.
+        </p>
+        <br />
+        <p>
+          2.document.querySelector('.class-name'): Selects the first element
+          that matches a class, id, or tag.
+        </p>
+        <br />
+        <p>
+          3.document.getElementsByClassName('class-name'): Selects all elements
+          with a particular class.
+        </p>
+      </div>
+    </div>
+
+    <div class="collapse collapse-arrow bg-base-200">
+      <input type="radio" name="my-accordion-2" />
+      <div class="collapse-title text-xl font-medium">
+        c. What is event delegation in the context of the DOM, and why is it
+        useful?
+      </div>
+      <div class="collapse-content">
+        <p>
+          Event delegation is a technique where instead of attaching event
+          listeners to many individual elements, we can attach a single event
+          listener to a parent element. When an event occurs (like a click), the
+          event "bubbles up" to the parent, allowing us to handle events for
+          multiple child elements at once.
+        </p>
+        <br />
+        <p>
+          This is useful because: It improves performance by reducing the number
+          of event listeners. It simplifies managing dynamic content, where
+          elements are added or removed from the DOM.
+        </p>
+      </div>
+    </div>
+
+    <div class="collapse collapse-arrow bg-base-200">
+      <input type="radio" name="my-accordion-2" />
+      <div class="collapse-title text-xl font-medium">
+        d. How do you manipulate an element's attributes and styles using the
+        DOM?
+      </div>
+      <div class="collapse-content">
+        <p>
+          In the DOM (Document Object Model), we can change the attributes (like
+          src, href, etc.) and styles (like color, size, etc.) of an element
+          using JavaScript. This is helpful when we want to update how elements
+          look or behave without reloading the page.
+        </p>
+        <br />
+        <p>
+          <b>1. Changing Attributes:</b> An attribute is extra information added
+          to an HTML element, such as an image's src (source) or a link's href
+          (URL). We can update an element's attributes like this: <br /><b
+            ><u>Example:</u></b
+          >
+          <b>Changing an Image's src Attribute: </b><br /><i
+            >const image = document.getElementById('myImage');</i
+          >
+          <br /><i>image.setAttribute('src', 'new-image.jpg'); </i><br /><b
+            >We can also directly set the attribute like this:</b
+          >
+          <br /><i>image.src = 'new-image.jpg'; </i><br />
+        </p>
+        <br />
+        <p>
+          <b>2. Changing Styles:</b> We can change the CSS styles of an element
+          using element.style. <br />For example, if we want to make a box turn
+          red or adjust its size, we can do this: <br /><b><u>Example:</u></b>
+          <b>Changing Background Color:</b> <br /><i
+            >const box = document.getElementById('myBox');</i
+          >
+          <br /><i>box.style.backgroundColor = 'red';</i> <br /><b
+            >Example: Changing the Width:</b></br>
+          <i>box.style.width = '200px';</i>
+        </p>
+      </div>
+    </div>
+
+    <script src="./donate.js"></script>
+  </body>
+</html>

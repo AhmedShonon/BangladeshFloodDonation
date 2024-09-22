@@ -1,14 +1,7 @@
-# Welcome to Assignment 5
+# Welcome to the BangladeshFloodDonation Website here the following things had covered
 
 ## <img width=30px src="assets/logo.png"/> DONATE BANGLADESH
 
-## Key Rule
-
-- Do not ask about mark distribution in the group, as it will not be provided.
-- Do not post assignment feedback after receiving it. If you encounter issues or have complaints, please join a support session for discussion.
-- Avoid using "lorem ipsum" text. Use relevant and meaningful content instead.
-- Feel free to modify the color or design, but ensure the design is visually appealing and professional.
-- You are **not allowed** to use any JavaScript library or framework for this assignment.
 
 ## Design
 

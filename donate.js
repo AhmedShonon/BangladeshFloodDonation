@@ -1,12 +1,19 @@
 let myBalance = parseFloat(document.getElementById("my-balance").innerText);
-// Donate Noakhali btn
+// Donate Noakhali,Feni and on quota Balances
 let noakhaliBalance = parseFloat(
   document.getElementById("noakhali-balance").innerText
+);
+
+let feniBalance = parseFloat(document.getElementById("feni-balance").innerText);
+let quotaBalance = parseFloat(
+  document.getElementById("quota-balance").innerText
 );
 // modal
 const modal = document.getElementById("modal");
 const closeModalBtn = document.getElementById("close-modal");
 const noakhaliInput = document.getElementById("donate-noakhali");
+const feniInput = document.getElementById("donate-feni");
+const quotaInput = document.getElementById("donate-quota");
 // Function to show the modal
 function showModal() {
   modal.showModal(); // Show the modal
@@ -15,6 +22,8 @@ function showModal() {
 closeModalBtn.addEventListener("click", function () {
   modal.close(); // Close the modal
   noakhaliInput.value = "";
+  feniInput.value = "";
+  quotaInput.value = "";
 });
 
 // Function to get and display the dynamic donation message with time
@@ -31,9 +40,18 @@ function displayDonationMessage(amount, location) {
     "rounded-xl"
   );
 
+  // Determine the message based on the location
+  let donationMessage;
+  if (location === "Noakhali") {
+    donationMessage = `${amount} Taka is Donated for Donate for Flood at Noakhali, Bangladesh`;
+  } else if (location === "Feni") {
+    donationMessage = `${amount} Taka is Donated for Donate for Flood Relief in Feni, Bangladesh`;
+  } else if (location === "Quota") {
+    donationMessage = `${amount} Taka is Donated for Aid for Injured in the Quota Movement`;
+  }
   // Set the inner HTML for the donation card
   donationCard.innerHTML = `
-    <strong style="color: black;">${amount} Taka is Donated for Donate for Flood at ${location}, Bangladesh</strong>
+    <strong style="color: black;">${donationMessage}</strong>
     <br>
     <span style="font-weight: 300; color: gray;">Date: ${date.toString()}</span>
   `;
@@ -66,7 +84,7 @@ cardDonationBtn1.addEventListener("click", function () {
     //   `Donated ${donateNoakhali} to Noakhali. Remaining balance: ${myBalance}`
     // );
   } else {
-    alert("Please enter a valid donation amount.");
+    alert("Invalid donation amount.");
     return;
   }
 });
@@ -77,16 +95,19 @@ const cardDonationBtn2 = document.getElementById("card-donation-btn2");
 cardDonationBtn2.addEventListener("click", function () {
   const donateFeni = parseFloat(document.getElementById("donate-feni").value);
 
-  if (!isNaN(donateFeni) && donateFeni > 0) {
+  if (donateFeni > myBalance) {
+    alert("You cannot donate more than your available balance.");
+    return;
+  } else if (!isNaN(donateFeni) && donateFeni > 0) {
     myBalance -= donateFeni;
+    feniBalance += donateFeni;
     document.getElementById("my-balance").innerText = myBalance.toFixed(2);
-    // console.log(
-    //   `Donated ${donateFeni} to Feni. Remaining balance: ${myBalance}`
-    // );
+    document.getElementById("feni-balance").innerText = feniBalance.toFixed(2);
     showModal();
-    displayDonationMessage(donateNoakhali, "Noakhali");
+    displayDonationMessage(donateFeni, "Feni");
   } else {
-    console.log("Invalid donation amount.");
+    alert("Invalid donation amount.");
+    return;
   }
 });
 
@@ -95,16 +116,20 @@ const cardDonationBtn3 = document.getElementById("card-donation-btn3");
 
 cardDonationBtn3.addEventListener("click", function () {
   const donateQuota = parseFloat(document.getElementById("donate-quota").value);
-
-  if (!isNaN(donateQuota) && donateQuota > 0) {
+  if (donateQuota > myBalance) {
+    alert("You cannot donate more than your available balance.");
+    return;
+  } else if (!isNaN(donateQuota) && donateQuota > 0) {
     myBalance -= donateQuota;
+    quotaBalance += donateQuota;
     document.getElementById("my-balance").innerText = myBalance.toFixed(2);
-    // console.log(
-    //   `Donated ${donateQuota} to Quota. Remaining balance: ${myBalance}`
-    // );
+    document.getElementById("quota-balance").innerText =
+      quotaBalance.toFixed(2);
     showModal();
+    displayDonationMessage(donateQuota, "Quota");
   } else {
-    console.log("Invalid donation amount.");
+    alert("Invalid donation amount.");
+    return;
   }
 });
 

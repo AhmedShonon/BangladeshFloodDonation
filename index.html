@@ -55,21 +55,34 @@
             src="./assets/coin.png"
             alt=""
           />
-          <p class="font-medium"><span>5500</span><span> BDT</span></p>
+          <p class="font-medium">
+            <span id="my-balance">99999</span><span> BDT</span>
+          </p>
         </div>
       </nav>
 
       <section class="flex justify-center gap-3 mt-11 pb-5">
-        <button class="bg-[#b5f562] px-5 py-3 rounded-md font-bold">
+        <button
+          id="donation-btn"
+          class="bg-[#b5f562] px-5 py-3 rounded-md font-bold text-black"
+        >
           Donation</button
-        ><button class="bg-[#b5f562] px-5 py-3 rounded-md font-bold">
+        ><button
+          id="history-btn"
+          class="px-5 py-3 border-[2px] rounded-md font-bold text-gray-400"
+        >
           History
         </button>
       </section>
     </header>
+    <!-- This section will show the donation message -->
+    <div
+      id="donation-message"
+      class="hidden p-10 my-7 md:mx-40 rounded-xl"
+    ></div>
 
     <!-- Cards Section -->
-    <section class="sm:px-12 md:px-28">
+    <section id="cards" class="sm:px-12 md:px-28">
       <!-- 1st Card -->
       <div
         class="grid sm:grid-cols-1 md:grid-cols-2 p-5 my-7 border border-gray-200 rounded-xl"
@@ -83,8 +96,9 @@
             class="bg-[#f2f2f2] px-5 py-2 rounded-[8px] flex items-center mt-5"
           >
             <img class="mr-2" src="./assets/coin.png" alt="" /><span
+              id="noakhali-balance"
               class="mr-1"
-              >0</span
+              >19000</span
             >
             <span> BDT</span>
           </button>
@@ -100,14 +114,16 @@
             need.
           </p>
           <input
+            id="donate-noakhali"
             type="text"
             class="w-[100%] text-lg text-black font-light text-left mt-4 border border-solid rounded-md p-2"
             placeholder="Write Donation Amount"
           />
           <button
+            id="card-donation-btn1"
             class="w-[100%] mt-4 mb-5 bg-[#b5f562] px-5 py-3 rounded-md font-bold"
           >
-            Donation
+            Donation Now
           </button>
         </div>
       </div>
@@ -125,7 +141,7 @@
           >
             <img class="mr-2" src="./assets/coin.png" alt="" /><span
               class="mr-1"
-              >600</span
+              >60000</span
             >
             <span> BDT</span>
           </button>
@@ -143,14 +159,16 @@
             need.
           </p>
           <input
+            id="donate-feni"
             type="text"
             class="w-[100%] text-lg text-black font-light text-left mt-4 border border-solid rounded-md p-2"
             placeholder="Write Donation Amount"
           />
           <button
+            id="card-donation-btn2"
             class="w-[100%] mt-4 mb-5 bg-[#b5f562] px-5 py-3 rounded-md font-bold"
           >
-            Donation
+            Donation Now
           </button>
         </div>
       </div>
@@ -168,7 +186,7 @@
           >
             <img class="mr-2" src="./assets/coin.png" alt="" /><span
               class="mr-1"
-              >2400</span
+              >20999</span
             >
             <span> BDT</span>
           </button>
@@ -187,18 +205,39 @@
             their time of need.
           </p>
           <input
+            id="donate-quota"
             type="text"
             class="w-[100%] text-lg text-black font-light text-left mt-4 border border-solid rounded-md p-2"
             placeholder="Write Donation Amount"
           />
           <button
+            id="card-donation-btn3"
             class="w-[100%] mt-4 mb-5 bg-[#b5f562] px-5 py-3 rounded-md font-bold"
           >
-            Donation
+            Donation Now
           </button>
         </div>
       </div>
     </section>
+    <!-- Modal -->
+    <dialog id="modal" class="modal">
+      <div
+        class="bg-white mx-auto text-center py-5 px-9 md:py-9 md:px-24 rounded-lg"
+      >
+        <h1 class="font-black text-3xl mb-2">Congrates!</h1>
+        <img class="mx-auto mb-3 text-2xl" src="./assets/coin.png" alt="" />
+        <p class="font-light text-sm mb-2">You Have Donated for HumanKind</p>
+        <h3 class="font-bold text-lg mb-5">Successfully</h3>
+        <button
+          id="close-modal"
+          class="btn btn-outline border-none bg-slate-100 rounded-xl p-3"
+          hover
+        >
+          close confirmation
+        </button>
+      </div>
+    </dialog>
+
     <footer>
       <div class="bg-[#faf8f5] w-full h-24">
         <!-- Empty div for background and border -->

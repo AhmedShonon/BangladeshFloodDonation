@@ -14,7 +14,7 @@ const closeModalBtn = document.getElementById("close-modal");
 const noakhaliInput = document.getElementById("donate-noakhali");
 const feniInput = document.getElementById("donate-feni");
 const quotaInput = document.getElementById("donate-quota");
-// Function to show the modal
+// Function to show the modal ----- common function 1
 function showModal() {
   modal.showModal(); // Show the modal
 }
@@ -26,7 +26,7 @@ closeModalBtn.addEventListener("click", function () {
   quotaInput.value = "";
 });
 
-// Function to get and display the dynamic donation message with time
+// Function to get and display the dynamic donation message with time ----- common function 2
 function displayDonationMessage(amount, location) {
   const date = new Date(); // Get current date and time
 
@@ -55,22 +55,55 @@ function displayDonationMessage(amount, location) {
     <br>
     <span style="font-weight: 300; color: gray;">Date: ${date.toString()}</span>
   `;
-
   // Append the new donation card to the container
   document.getElementById("donation-message").appendChild(donationCard);
 }
 
 //Noakhali
 const cardDonationBtn1 = document.getElementById("card-donation-btn1");
+
 cardDonationBtn1.addEventListener("click", function () {
-  const donateNoakhali = parseFloat(
-    document.getElementById("donate-noakhali").value
-  );
+  const donateNoakhaliInput = document
+    .getElementById("donate-noakhali")
+    .value.trim();
+
+  // Function to check if the input is a valid number
+  function isValidNumber(input) {
+    let decimalCount = 0;
+
+    for (let i = 0; i < input.length; i++) {
+      const char = input[i];
+
+      // Check if the character is a number or a decimal point
+      if (char >= "0" && char <= "9") {
+        continue; // Valid numeric character
+      } else if (char === ".") {
+        decimalCount++;
+        if (decimalCount > 1) {
+          return false; // More than one decimal point
+        }
+      } else {
+        return false; // Invalid character
+      }
+    }
+
+    // Check if the input contains at least one number
+    return input.length > 0 && input !== ".";
+  }
+
+  // Call the validation function
+  if (!isValidNumber(donateNoakhaliInput)) {
+    alert("Invalid donation amount. Please enter a valid number.");
+    return;
+  }
+
+  const donateNoakhali = parseFloat(donateNoakhaliInput);
+
   // Ensure the donation amount is valid
   if (donateNoakhali > myBalance) {
     alert("You cannot donate more than your available balance.");
     return;
-  } else if (!isNaN(donateNoakhali) && donateNoakhali > 0) {
+  } else if (donateNoakhali > 0) {
     // Update the balance
     myBalance -= donateNoakhali;
     noakhaliBalance += donateNoakhali;
@@ -80,27 +113,54 @@ cardDonationBtn1.addEventListener("click", function () {
       noakhaliBalance.toFixed(2);
     showModal();
     displayDonationMessage(donateNoakhali, "Noakhali");
-    // console.log(
-    //   `Donated ${donateNoakhali} to Noakhali. Remaining balance: ${myBalance}`
-    // );
   } else {
     alert("Invalid donation amount.");
     return;
   }
 });
 
-// Donate Feni button
+//Feni
+
 const cardDonationBtn2 = document.getElementById("card-donation-btn2");
 
 cardDonationBtn2.addEventListener("click", function () {
-  const donateFeni = parseFloat(document.getElementById("donate-feni").value);
+  const donateFeniInput = document.getElementById("donate-feni").value.trim();
+
+  function isValidNumber(input) {
+    let decimalCount = 0;
+
+    for (let i = 0; i < input.length; i++) {
+      const char = input[i];
+
+      if (char >= "0" && char <= "9") {
+        continue;
+      } else if (char === ".") {
+        decimalCount++;
+        if (decimalCount > 1) {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+
+    return input.length > 0 && input !== ".";
+  }
+
+  if (!isValidNumber(donateFeniInput)) {
+    alert("Invalid donation amount. Please enter a valid number.");
+    return;
+  }
+
+  const donateFeni = parseFloat(donateFeniInput);
 
   if (donateFeni > myBalance) {
     alert("You cannot donate more than your available balance.");
     return;
-  } else if (!isNaN(donateFeni) && donateFeni > 0) {
+  } else if (donateFeni > 0) {
     myBalance -= donateFeni;
     feniBalance += donateFeni;
+
     document.getElementById("my-balance").innerText = myBalance.toFixed(2);
     document.getElementById("feni-balance").innerText = feniBalance.toFixed(2);
     showModal();
@@ -111,17 +171,47 @@ cardDonationBtn2.addEventListener("click", function () {
   }
 });
 
-// Donate Quota button
+//Quota
 const cardDonationBtn3 = document.getElementById("card-donation-btn3");
 
 cardDonationBtn3.addEventListener("click", function () {
-  const donateQuota = parseFloat(document.getElementById("donate-quota").value);
+  const donateQuotaInput = document.getElementById("donate-quota").value.trim();
+
+  function isValidNumber(input) {
+    let decimalCount = 0;
+
+    for (let i = 0; i < input.length; i++) {
+      const char = input[i];
+
+      if (char >= "0" && char <= "9") {
+        continue;
+      } else if (char === ".") {
+        decimalCount++;
+        if (decimalCount > 1) {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    }
+
+    return input.length > 0 && input !== ".";
+  }
+
+  if (!isValidNumber(donateQuotaInput)) {
+    alert("Invalid donation amount. Please enter a valid number.");
+    return;
+  }
+
+  const donateQuota = parseFloat(donateQuotaInput);
+
   if (donateQuota > myBalance) {
     alert("You cannot donate more than your available balance.");
     return;
-  } else if (!isNaN(donateQuota) && donateQuota > 0) {
+  } else if (donateQuota > 0) {
     myBalance -= donateQuota;
     quotaBalance += donateQuota;
+
     document.getElementById("my-balance").innerText = myBalance.toFixed(2);
     document.getElementById("quota-balance").innerText =
       quotaBalance.toFixed(2);
